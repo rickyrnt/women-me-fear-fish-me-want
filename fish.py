@@ -10,7 +10,7 @@ with open(xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt', 'r') a
     engine = pyttsx3.init()
     engine.setProperty('rate', 120)
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[2].id) 
+    engine.setProperty('voice', voices[1].id) 
 
     print(line)
     engine.say(line)
