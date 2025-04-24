@@ -1,7 +1,11 @@
+#!/usr/bin/env python3
+
 import random
 import pyttsx3
+from xdg import xdg_config_home
 
-with open('/etc/fishe.txt', 'r') as f:
+print(xdg_config_home())
+with open(xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt', 'r') as f:
     line = random.choice(f.readlines())
 
     engine = pyttsx3.init()

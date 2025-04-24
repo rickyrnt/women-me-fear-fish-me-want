@@ -12,8 +12,11 @@
   {
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = [
-        pkgs.python3
-        pkgs.python312Packages.pyttsx3
+        pkgs.espeak
+        (pkgs.python3.withPackages ( py: [
+          py.pyttsx3
+          py.xdg
+        ]))
       ];
     };
   };
