@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import random
 import pyttsx3
 from xdg import xdg_config_home
 
-print(xdg_config_home())
 with open(xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt', 'r') as f:
     line = random.choice(f.readlines())
 

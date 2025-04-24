@@ -12,12 +12,14 @@
   {
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = [
-        pkgs.espeak
+        pkgs.alsa-utils
+        pkgs.espeak-ng
         (pkgs.python3.withPackages ( py: [
           py.pyttsx3
           py.xdg
         ]))
       ];
+      shellHook = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${pkgs.espeak}/lib";
     };
   };
 }
