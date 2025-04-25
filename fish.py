@@ -2,9 +2,14 @@
 
 import random
 import pyttsx3
+from pathlib import Path
 from xdg import xdg_config_home
 
-with open(xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt', 'r') as f:
+linefile = Path("./fishlines.txt")
+if Path.exists(xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt'):
+    linefile = xdg_config_home() / 'women-me-fear-fish-me-want/fishlines.txt'
+
+with open(linefile, 'r') as f:
     line = random.choice(f.readlines())
 
     engine = pyttsx3.init()
