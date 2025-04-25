@@ -1,9 +1,9 @@
-{ lib, python3Packages, espeak }:
+{ lib, python3Packages, espeak, alsa-utils }:
 with python3Packages; buildPythonApplication rec {
   pname = "women-me-fear-fish-me-want";
   version = "1.0.0";
   
-  dependencies = [ pyttsx3 xdg ];
+  dependencies = [ pyttsx3 xdg alsa-utils ];
   
   src = ./.;
   
