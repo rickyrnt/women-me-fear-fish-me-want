@@ -1,14 +1,19 @@
-{ lib, python3Packages, alsa-utils }:
+{ lib, python3Packages, espeak }:
 with python3Packages; buildPythonApplication rec {
   pname = "women-me-fear-fish-me-want";
   version = "1.0.0";
   
-  dependencies = [ my_pyttsx3 xdg ];
+  dependencies = [ pyttsx3 xdg ];
   
   src = ./.;
   
   postInstall = ''
     cp fishlines.txt $out/bin
+  '';
+
+  # Ensure espeak is available at runtime
+  preFixup = ''
+    export LD_LIBRARY_PATH=${espeak}/lib:$LD_LIBRARY_PATH
   '';
 
   meta = {

@@ -9,27 +9,7 @@
   outputs = { self, nixpkgs, ... }@inputs: 
     inputs.flake-utils.lib.eachDefaultSystem(system:
       let 
-        pkgs = (import inputs.nixpkgs) { 
-          inherit system;
-          overlays = [
-            (final: prev: {
-              pythonPackagesOverlays = (prev.pythonPackagesOverlays or [ ]) ++ [
-                (pyfinal: pyprev: {
-                  my_pyttsx3 = pyfinal.callPackage ./pyttsx3.nix {};
-                })
-              ];
-              
-              python3 = let
-                self = prev.python3.override {
-                  inherit self;
-                  packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
-                };
-              in self;
-
-              python3Packages = final.python3.pkgs;
-            })
-          ];
-        };
+        pkgs = (import inputs.nixpkgs) { inherit system; };
       in 
       {
         packages = rec {
